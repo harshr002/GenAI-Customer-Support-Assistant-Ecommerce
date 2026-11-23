@@ -1,0 +1,124 @@
+Issue Type,Summary,Description,Priority,Labels,Epic Name,Story Points
+Story,US-01 Ask 'Where is my order?' in my own words,"As a customer, I want to ask 'Where is my order?' in my own words, so that I get the status without waiting for an agent.
+
+Acceptance criteria:
+* Given I am verified (PG-01), when I ask about my order, then the assistant shows the status and expected delivery date from the order system within 5 seconds.
+* If I have more than one active order, the assistant lists them (masked) and asks which one.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Order queries,5
+Story,US-02 Start a return in chat,"As a customer, I want to start a return in chat, so that I do not have to fill a separate form.
+
+Acceptance criteria:
+* Given the item is within the return window, when I ask to return it, then the assistant explains the policy with a link (AG-04), creates the return and shows the pickup date.
+* Given the item is outside the window or non-returnable, then the assistant explains why and offers a human (HT-07 does not apply).
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Returns and refunds,8
+Story,US-03 Check my refund status,"As a customer, I want to check my refund status, so that I know when the money will reach me.
+
+Acceptance criteria:
+* The assistant shows refund amount, method and expected credit date from the returns system.
+* It never estimates a date the system did not return (AG-03).
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Returns and refunds,3
+Story,US-04 Reach a human at any time,"As a customer, I want to reach a human at any time, so that I am never stuck with a bot.
+
+Acceptance criteria:
+* Given I type a request for a human, then I am handed off immediately (HT-01) and told the expected wait time.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Human handoff,3
+Story,US-05 Answers to policy questions to link to the official policy,"As a customer, I want answers to policy questions to link to the official policy, so that I can trust them.
+
+Acceptance criteria:
+* Every policy answer includes a link to the source knowledge base article (AG-04).
+* If the answer is not in the knowledge base, the assistant says it does not know and offers a human (AG-01).
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Answer quality,3
+Story,US-06 Know I am talking to an AI and how my data is used,"As a customer, I want to know I am talking to an AI and how my data is used, so that I can decide whether to continue.
+
+Acceptance criteria:
+* The first message states the assistant is an AI, that I can ask for a human, and links the privacy notice (PG-06).
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Privacy and security,1
+Story,US-07 Rate the chat at the end,"As a customer, I want to rate the chat at the end, so that the company knows if it helped.
+
+Acceptance criteria:
+* When the chat closes (AI or agent), a 1-5 CSAT question is shown.
+* The rating is stored with the chat ID and whether it was handed off.
+
+MoSCoW: Should",High,genai-assistant moscow-should,Measurement,2
+Story,US-08 The full transcript and an AI summary when a chat is handed to me,"As a Support Agent, I want the full transcript and an AI summary when a chat is handed to me, so that the customer does not repeat themselves.
+
+Acceptance criteria:
+* The summary shows intent, order ID, steps already taken and the handoff reason in 5 lines or fewer.
+* The customer is not asked again for information already in the transcript.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Human handoff,5
+Story,US-09 See why a chat was handed off,"As a Support Agent, I want to see why a chat was handed off, so that I can respond in the right way.
+
+Acceptance criteria:
+* The handoff reason (HT-01 to HT-07) is shown as a label.
+* Priority handoffs (HT-05) appear at the top of my queue.
+
+MoSCoW: Should",High,genai-assistant moscow-should,Human handoff,2
+Story,US-10 Tag the reason a chat needed a human after I resolve it,"As a Support Agent, I want to tag the reason a chat needed a human after I resolve it, so that the team can improve the assistant.
+
+Acceptance criteria:
+* Before closing a handed-off chat, I must pick a reason tag (e.g., missing policy, wrong answer, customer preference).
+
+MoSCoW: Should",High,genai-assistant moscow-should,Continuous improvement,2
+Story,US-11 Flag an incorrect AI answer from the transcript,"As a Support Agent, I want to flag an incorrect AI answer from the transcript, so that it can be fixed in the knowledge base.
+
+Acceptance criteria:
+* Each AI message has a 'Flag answer' action with a required comment.
+* Flagged answers appear in the Team Lead's review list.
+
+MoSCoW: Could",Medium,genai-assistant moscow-could,Continuous improvement,3
+Story,US-12 Approve knowledge base articles before the assistant uses them,"As a Support Team Lead, I want to approve knowledge base articles before the assistant uses them, so that answers follow current policy.
+
+Acceptance criteria:
+* Only articles with status Approved are available to the assistant (AG-01).
+* Editing an approved article returns it to Draft until re-approved.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Answer quality,5
+Story,US-13 A weekly sample of 50 AI conversations to review,"As a Support Team Lead, I want a weekly sample of 50 AI conversations to review, so that I can measure answer accuracy.
+
+Acceptance criteria:
+* Every Monday, 50 random AI-only conversations from the past week are listed with Correct / Incorrect / Partially correct options (AG-06).
+* Accuracy % is calculated automatically.
+
+MoSCoW: Should",High,genai-assistant moscow-should,Measurement,3
+Story,"US-14 A dashboard of deflection rate, first response time and CSAT","As a Support Team Lead, I want a dashboard of deflection rate, first response time and CSAT, so that I can judge whether the pilot is working.
+
+Acceptance criteria:
+* The dashboard shows the KPIs in kpi/KPI_Definitions.xlsx, daily and for the pilot to date.
+* AI chats and agent chats can be compared side by side.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Measurement,5
+Story,US-15 Change handoff thresholds without a code release,"As a Support Team Lead, I want to change handoff thresholds without a code release, so that I can tune the pilot.
+
+Acceptance criteria:
+* Confidence threshold, sentiment threshold and refund limit are editable by the Team Lead role.
+* Every change is logged with user and timestamp.
+
+MoSCoW: Could",Medium,genai-assistant moscow-could,Continuous improvement,3
+Story,US-16 Customers verified by OTP before order details are shown,"As a Compliance Officer, I want customers verified by OTP before order details are shown, so that personal data is not exposed.
+
+Acceptance criteria:
+* No order data is shown before OTP success (PG-01).
+* 3 failed attempts lock order lookups for the chat and trigger HT-06.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Privacy and security,3
+Story,US-17 Payment details masked and personal data redacted before it reaches the LLM,"As a Compliance Officer, I want payment details masked and personal data redacted before it reaches the LLM, so that we meet data protection obligations.
+
+Acceptance criteria:
+* Card numbers, CVV and UPI PIN patterns are masked in the transcript and a warning is shown (PG-03).
+* Text sent to the LLM provider contains no unmasked phone, email, address or payment data (PG-04).
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Privacy and security,5
+Story,US-18 Transcripts deleted after 90 days,"As a Compliance Officer, I want transcripts deleted after 90 days, so that we do not keep personal data longer than needed.
+
+Acceptance criteria:
+* A daily job deletes transcripts older than 90 days and logs the count deleted (PG-05).
+* Only Support and Compliance roles can open transcripts.
+
+MoSCoW: Must",Highest,genai-assistant moscow-must,Privacy and security,3
